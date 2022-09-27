@@ -13,7 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatTableModule } from '@angular/material/table';
-
+import { AgmCoreModule } from '@agm/core';
 
 // import {ViewdataModule} from './viewdata/viewdata.module';
 // import {DataviewComponent} from './viewdata/da';
@@ -35,6 +35,11 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
+    AgmCoreModule.forRoot({
+      // please get your own API key here:
+      // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
+      apiKey: 'AIzaSyC0PbutqNtO7H_aOhGzbhFrVRimXGaZkOA'
+    })
    
    
   ],

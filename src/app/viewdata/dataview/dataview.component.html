@@ -4,21 +4,23 @@
   </p>
 </div>
 <div class="inputing">
-
-    <mat-form-field appearance="fill">
-      <mat-label>Select Route</mat-label>
-      <mat-select [formControl]="routeControl" required>
-        <mat-option>Clear</mat-option>
-        <mat-option *ngFor="let route of routes" [value]="route">
-          {{route.name}}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="routeControl.hasError('required')">Please choose a route</mat-error>
-      <mat-hint>Selected route is {{routeControl.value?.id}}</mat-hint>
-    </mat-form-field>
-    <button style="margin-left :20px" mat-raised-button color="primary">Show Map View</button>
+  <mat-form-field appearance="fill">
+    <mat-label>Select Route</mat-label>
+    <mat-select [formControl]="routeControl" required>
+      <mat-option>Clear</mat-option>
+      <mat-option *ngFor="let route of routes" [value]="route">
+        {{ route.name }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="routeControl.hasError('required')"
+      >Please choose a route</mat-error
+    >
+    <mat-hint>Selected route is {{ routeControl.value?.id }}</mat-hint>
+  </mat-form-field>
+  <button style="margin-left: 20px" mat-raised-button color="primary"  (click)="mapClick()">
+    Show Map View
+  </button>
 </div>
-
 
 <!-- <div class="container mt-5">
   
@@ -57,64 +59,97 @@
   </table>
 </div> -->
 
+<div *ngIf="mapShow==true" class="mapview"> 
+  <agm-map
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="zoom"
+    [disableDefaultUI]="false"
+    (mapClick)="mapClicked($event)"
+  >
+    <agm-marker
+      *ngFor="let m of markers; let i = index"
+      (markerClick)="clickedMarker(m.label, i, infowindow)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [markerDraggable]="m.draggable"
+      (dragEnd)="markerDragEnd(m, $event)"
+    >
+      <agm-info-window #infowindow>
+        <strong>InfoWindow content</strong>
+      </agm-info-window>
+    </agm-marker>
+
+    <agm-circle
+      [latitude]="lat + 0.3"
+      [longitude]="lng"
+      [radius]="5000"
+      [fillColor]="'red'"
+      [circleDraggable]="true"
+      [editable]="true"
+    >
+    </agm-circle>
+  </agm-map>
+</div>
+
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
-
     <!-- Position Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>id </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <th mat-header-cell *matHeaderCellDef>id</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="timestamp">
-      <th mat-header-cell *matHeaderCellDef>timestamp </th>
-      <td mat-cell *matCellDef="let element"> {{element.timestamp}} </td>
+      <th mat-header-cell *matHeaderCellDef>timestamp</th>
+      <td mat-cell *matCellDef="let element">{{ element.timestamp }}</td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="accx">
-      <th mat-header-cell *matHeaderCellDef> accx </th>
-      <td mat-cell *matCellDef="let element"> {{element.accx}} </td>
+      <th mat-header-cell *matHeaderCellDef>accx</th>
+      <td mat-cell *matCellDef="let element">{{ element.accx }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="accy">
-      <th mat-header-cell *matHeaderCellDef> accy </th>
-      <td mat-cell *matCellDef="let element"> {{element.accy}} </td>
+      <th mat-header-cell *matHeaderCellDef>accy</th>
+      <td mat-cell *matCellDef="let element">{{ element.accy }}</td>
     </ng-container>
     <ng-container matColumnDef="accz">
-      <th mat-header-cell *matHeaderCellDef> accz </th>
-      <td mat-cell *matCellDef="let element"> {{element.accz}} </td>
+      <th mat-header-cell *matHeaderCellDef>accz</th>
+      <td mat-cell *matCellDef="let element">{{ element.accz }}</td>
     </ng-container>
     <ng-container matColumnDef="rollx">
-      <th mat-header-cell *matHeaderCellDef> rollx </th>
-      <td mat-cell *matCellDef="let element"> {{element.rollx}} </td>
+      <th mat-header-cell *matHeaderCellDef>rollx</th>
+      <td mat-cell *matCellDef="let element">{{ element.rollx }}</td>
     </ng-container>
     <ng-container matColumnDef="yawy">
-      <th mat-header-cell *matHeaderCellDef> yawy </th>
-      <td mat-cell *matCellDef="let element"> {{element.yawy}} </td>
+      <th mat-header-cell *matHeaderCellDef>yawy</th>
+      <td mat-cell *matCellDef="let element">{{ element.yawy }}</td>
     </ng-container>
     <ng-container matColumnDef="pitchz">
-      <th mat-header-cell *matHeaderCellDef> pitchz </th>
-      <td mat-cell *matCellDef="let element"> {{element.pitchz}} </td>
+      <th mat-header-cell *matHeaderCellDef>pitchz</th>
+      <td mat-cell *matCellDef="let element">{{ element.pitchz }}</td>
     </ng-container>
     <ng-container matColumnDef="latitude">
-      <th mat-header-cell *matHeaderCellDef> latitude </th>
-      <td mat-cell *matCellDef="let element"> {{element.latitude}} </td>
+      <th mat-header-cell *matHeaderCellDef>latitude</th>
+      <td mat-cell *matCellDef="let element">{{ element.latitude }}</td>
     </ng-container>
     <ng-container matColumnDef="longitude">
-      <th mat-header-cell *matHeaderCellDef> longitude </th>
-      <td mat-cell *matCellDef="let element"> {{element.longitude}} </td>
+      <th mat-header-cell *matHeaderCellDef>longitude</th>
+      <td mat-cell *matCellDef="let element">{{ element.longitude }}</td>
     </ng-container>
 
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons 
-                 aria-label="Select page of periodic elements">
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
   </mat-paginator>
 </div>

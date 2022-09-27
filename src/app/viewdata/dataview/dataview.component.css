@@ -8,6 +8,15 @@
    
   
 }
+
+agm-map {
+  height: 500px;
+}
+
+a {
+  color: darkblue;
+}
+
 table {
   width: 100%;
   margin-left: 20px;
@@ -61,4 +70,11 @@ section {
   display: flex;
   justify-content: center;
   width: 120px;
+}
+
+.mapview {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
