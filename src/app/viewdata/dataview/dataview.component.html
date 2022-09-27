@@ -1,0 +1,120 @@
+<div class="header">
+  <p class="heading">
+    Blockchain-based Autonomous Vehicle Network Security Platform
+  </p>
+</div>
+<div class="inputing">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select Route</mat-label>
+      <mat-select [formControl]="routeControl" required>
+        <mat-option>Clear</mat-option>
+        <mat-option *ngFor="let route of routes" [value]="route">
+          {{route.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="routeControl.hasError('required')">Please choose a route</mat-error>
+      <mat-hint>Selected route is {{routeControl.value?.id}}</mat-hint>
+    </mat-form-field>
+    <button style="margin-left :20px" mat-raised-button color="primary">Show Map View</button>
+</div>
+
+
+<!-- <div class="container mt-5">
+  
+  <h2>Angular Display Data from Json File Example</h2>
+  
+  <table class="table table-striped">
+    <thead>
+        <tr>
+          <th>id</th>
+          <th>timestamp</th>
+          <th>accx</th>
+          <th>accy</th>
+          <th>accz</th>
+          <th>rollx</th>
+          <th>yawy</th>
+          <th>pitchz</th>
+          <th>latitude</th>
+          <th>longitude</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of Users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.timestamp }}</td>
+        <td>{{ user.accx }}</td>
+        <td>{{ user.accy }}</td>
+        <td>{{ user.accz }}</td>
+        <td>{{ user.rollx }}</td>
+        <td>{{ user.yawy }}</td>
+        <td>{{ user.pitchz }}</td>
+        <td>{{ user.latitude }}</td>
+        <td>{{ user.longitude }}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="timestamp">
+      <th mat-header-cell *matHeaderCellDef>timestamp </th>
+      <td mat-cell *matCellDef="let element"> {{element.timestamp}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="accx">
+      <th mat-header-cell *matHeaderCellDef> accx </th>
+      <td mat-cell *matCellDef="let element"> {{element.accx}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="accy">
+      <th mat-header-cell *matHeaderCellDef> accy </th>
+      <td mat-cell *matCellDef="let element"> {{element.accy}} </td>
+    </ng-container>
+    <ng-container matColumnDef="accz">
+      <th mat-header-cell *matHeaderCellDef> accz </th>
+      <td mat-cell *matCellDef="let element"> {{element.accz}} </td>
+    </ng-container>
+    <ng-container matColumnDef="rollx">
+      <th mat-header-cell *matHeaderCellDef> rollx </th>
+      <td mat-cell *matCellDef="let element"> {{element.rollx}} </td>
+    </ng-container>
+    <ng-container matColumnDef="yawy">
+      <th mat-header-cell *matHeaderCellDef> yawy </th>
+      <td mat-cell *matCellDef="let element"> {{element.yawy}} </td>
+    </ng-container>
+    <ng-container matColumnDef="pitchz">
+      <th mat-header-cell *matHeaderCellDef> pitchz </th>
+      <td mat-cell *matCellDef="let element"> {{element.pitchz}} </td>
+    </ng-container>
+    <ng-container matColumnDef="latitude">
+      <th mat-header-cell *matHeaderCellDef> latitude </th>
+      <td mat-cell *matCellDef="let element"> {{element.latitude}} </td>
+    </ng-container>
+    <ng-container matColumnDef="longitude">
+      <th mat-header-cell *matHeaderCellDef> longitude </th>
+      <td mat-cell *matCellDef="let element"> {{element.longitude}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons 
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

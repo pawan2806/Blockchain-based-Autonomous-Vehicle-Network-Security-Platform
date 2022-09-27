@@ -1,0 +1,64 @@
+.heading {
+    font-size: 25px;
+    padding: 20px;
+    padding-top: 20px;
+    color: #4C6793;
+    font-family: "Garamond", Times, serif;
+    font-weight: 700;
+   
+  
+}
+table {
+  width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+.header {
+    border-left: #8BBCCC;
+    border-width: 15px;
+    border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: solid;
+  margin-left: 20px;
+  margin-top: 20px;
+
+}
+.inputing {
+  padding: 20px;
+}
+
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
