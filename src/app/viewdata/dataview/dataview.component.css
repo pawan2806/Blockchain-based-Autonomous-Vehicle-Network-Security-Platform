@@ -94,8 +94,8 @@ section {
 
 .example-container {
   width: auto;
-  height: 300px;
-  border: 2px solid rgba(0, 0, 0, 2);
+  height: 250px;
+  border: 2px solid rgba(0, 0, 0, 1);
 }
 
 .example-sidenav-content {
@@ -110,4 +110,5 @@ section {
 }
 .example-form-field {
   width: 200px;
+  padding-right: 30px;
 }

@@ -4,6 +4,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import UsersJson from './csvjson.json';
+import {FormBuilder, FormGroup, FormArray, } from '@angular/forms';
 import { AgmMap, GoogleMapsAPIWrapper } from '@agm/core';
 import {
   MapsAPILoader
@@ -42,6 +43,7 @@ interface marker {
 export class DataviewComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'timestamp', 'accx', 'accy', 'accz','rollx','yawy','pitchz','latitude','longitude'];
   mapShow: boolean;
+  formGroup: FormGroup;
   dataSource = new MatTableDataSource<USERS>(UsersJson);
   routeControl = new FormControl(null, Validators.required);
   selectFormControl = new FormControl('', Validators.required);
@@ -56,7 +58,7 @@ export class DataviewComponent implements AfterViewInit {
   markers: marker[] = [
   ]
   showFiller = false;
-  value = 'Clear me';
+  value = '';
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -102,12 +104,24 @@ export class DataviewComponent implements AfterViewInit {
 
   Users: USERS[] = UsersJson;
 
-  constructor(){
+  constructor(private fb: FormBuilder){
     
   }
 
   ngOnInit(): void {
     //console.log(this.Users);
+    this.formGroup = this.fb.group({
+      id: ['', Validators.required],
+      timestamp: ['', Validators.required],
+      accx: ['', Validators.required],
+      accy: ['', Validators.required],
+      accz: ['', Validators.required],
+      rollx: ['', Validators.required],
+      yawy: ['', Validators.required],
+      pitchz: ['', Validators.required],
+      latitude: ['', Validators.required],
+      longitude: ['', Validators.required],
+    });
     this.mapShow=false;
     this.Users.forEach( (element) => {
       this.markers.push(

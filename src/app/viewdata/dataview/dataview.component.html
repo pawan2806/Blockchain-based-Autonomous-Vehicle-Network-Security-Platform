@@ -26,87 +26,160 @@
     Show Map View
   </button>
 
-  <mat-drawer-container  class="example-container" >
-    <mat-drawer #drawer class="example-sidenav">
-      <p>Add sensor data here</p>
+  <mat-drawer-container class="example-container">
+    <mat-drawer #drawer class="example-sidenav" [formGroup]="formGroup">
+      <button
+        mat-button
+        (click)="mapClick()"
+      >
+        Add sensor data here
+      </button>
+      <br>
+      <br>
+     
       <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
       <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-label>id</mat-label>
+        <input matInput type="text" [(ngModel)]="formGroup.control['id'].value" />
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="formGroup.controls['id'].value."
+        >
           <mat-icon>close</mat-icon>
         </button>
+        <mat-hint>Enter id</mat-hint>
       </mat-form-field>
       <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-label>timestamp</mat-label>
+        <input matInput type="text" [(ngModel)]="value" />
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
           <mat-icon>close</mat-icon>
         </button>
+        <mat-hint>Enter itimestamp</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="example-form-field">
+        <mat-label>accx</mat-label>
+        <input matInput type="text" [(ngModel)]="value" />
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-hint>Enter accx</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="example-form-field">
+        <mat-label>accy</mat-label>
+        <input matInput type="text" [(ngModel)]="value" />
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-hint>Enter accy</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="example-form-field">
+        <mat-label>latitude</mat-label>
+        <input matInput type="text" [(ngModel)]="value" />
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-hint>Enter latitude</mat-hint>
       </mat-form-field>
       <br />
       <br />
+
       <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-label>accz</mat-label>
+        <input matInput type="text" [(ngModel)]="value" />
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
           <mat-icon>close</mat-icon>
         </button>
+        <mat-hint>Enter accz</mat-hint>
       </mat-form-field>
       <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-label>rollx</mat-label>
+        <input matInput type="text" [(ngModel)]="value" />
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
           <mat-icon>close</mat-icon>
         </button>
-      </mat-form-field>
-      <br />
-      <br />
-      <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-          <mat-icon>close</mat-icon>
-        </button>
+        <mat-hint>Enter rollx</mat-hint>
       </mat-form-field>
       <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-label>yawy</mat-label>
+        <input matInput type="text" [(ngModel)]="value" />
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
           <mat-icon>close</mat-icon>
         </button>
-      </mat-form-field>
-      <br />
-      <br />
-      <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-          <mat-icon>close</mat-icon>
-        </button>
+        <mat-hint>Enter yawy</mat-hint>
       </mat-form-field>
       <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-label>pitchz</mat-label>
+        <input matInput type="text" [(ngModel)]="value" />
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
           <mat-icon>close</mat-icon>
         </button>
-      </mat-form-field>
-      <br />
-      <br />
-      <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-          <mat-icon>close</mat-icon>
-        </button>
+        <mat-hint>Enter pitchz</mat-hint>
       </mat-form-field>
       <mat-form-field class="example-form-field">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-label>longitude</mat-label>
+        <input matInput type="text" [(ngModel)]="value" />
+        <button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
           <mat-icon>close</mat-icon>
         </button>
+        <mat-hint>Enter longitude</mat-hint>
       </mat-form-field>
     </mat-drawer>
 
