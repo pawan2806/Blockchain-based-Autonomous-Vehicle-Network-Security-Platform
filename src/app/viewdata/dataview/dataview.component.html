@@ -27,160 +27,168 @@
   </button>
 
   <mat-drawer-container class="example-container">
-    <mat-drawer #drawer class="example-sidenav" [formGroup]="formGroup">
+    <mat-drawer #drawer class="example-sidenav" >
+      
       <button
         mat-button
         (click)="mapClick()"
       >
         Add sensor data here
       </button>
-      <br>
-      <br>
-     
-      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-      <mat-form-field class="example-form-field">
-        <mat-label>id</mat-label>
-        <input matInput type="text" [(ngModel)]="formGroup.control['id'].value" />
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="formGroup.controls['id'].value."
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-hint>Enter id</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="example-form-field">
-        <mat-label>timestamp</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-hint>Enter itimestamp</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="example-form-field">
-        <mat-label>accx</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-hint>Enter accx</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="example-form-field">
-        <mat-label>accy</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-hint>Enter accy</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="example-form-field">
-        <mat-label>latitude</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-hint>Enter latitude</mat-hint>
-      </mat-form-field>
-      <br />
-      <br />
+      <form action="" name="f" [formGroup]="ClientForm" class="form">
+        <mat-form-field class="example-form-field">
+          <mat-label>id</mat-label>
+          <input matInput name="name"  formControlName="id" placeholder="Enter id" type="text" required>
+          <button
+            *ngIf="this.ClientForm.controls['id'].value!=''"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="this.ClientForm.controls['id'].reset()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Enter id</mat-hint>
+        </mat-form-field>
 
-      <mat-form-field class="example-form-field">
-        <mat-label>accz</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-hint>Enter accz</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="example-form-field">
-        <mat-label>rollx</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-hint>Enter rollx</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="example-form-field">
-        <mat-label>yawy</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-hint>Enter yawy</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="example-form-field">
-        <mat-label>pitchz</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-hint>Enter pitchz</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="example-form-field">
-        <mat-label>longitude</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
-        <button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value = ''"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-        <mat-hint>Enter longitude</mat-hint>
-      </mat-form-field>
+        <mat-form-field class="example-form-field">
+          <mat-label>timestamp</mat-label>
+          <input matInput name="name"  formControlName="timestamp" placeholder="Enter timestamp" type="text" required>
+          <button
+            *ngIf="this.ClientForm.controls['timestamp'].value!=''"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="this.ClientForm.controls['timestamp'].reset()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Enter timestamp</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>accx</mat-label>
+          <input matInput name="name"  formControlName="accx" placeholder="Enter accx" type="text" required>
+          <button
+            *ngIf="this.ClientForm.controls['accx'].value!=''"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="this.ClientForm.controls['accx'].reset()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Enter accx</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>accy</mat-label>
+          <input matInput name="name"  formControlName="accy" placeholder="Enter accy" type="text" required>
+          <button
+            *ngIf="this.ClientForm.controls['accy'].value!=''"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="this.ClientForm.controls['accy'].reset()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Enter accy</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>accz</mat-label>
+          <input matInput name="name"  formControlName="accz" placeholder="Enter accz" type="text" required>
+          <button
+            *ngIf="this.ClientForm.controls['accz'].value!=''"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="this.ClientForm.controls['accz'].reset()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Enter accz</mat-hint>
+        </mat-form-field>
+        <br />
+        <br />
+        <mat-form-field class="example-form-field">
+          <mat-label>rollx</mat-label>
+          <input matInput name="name"  formControlName="rollx" placeholder="Enter rollx" type="text" required>
+          <button
+            *ngIf="this.ClientForm.controls['rollx'].value!=''"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="this.ClientForm.controls['rollx'].reset()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Enter rollx</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>yawy</mat-label>
+          <input matInput name="name"  formControlName="yawy" placeholder="Enter yawy" type="text" required>
+          <button
+            *ngIf="this.ClientForm.controls['yawy'].value!=''"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="this.ClientForm.controls['yawy'].reset()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Enter yawy</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>pitchz</mat-label>
+          <input matInput name="name"  formControlName="pitchz" placeholder="Enter pitchz" type="text" required>
+          <button
+            *ngIf="this.ClientForm.controls['pitchz'].value!=''"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="this.ClientForm.controls['pitchz'].reset()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Enter pitchz</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>latitude</mat-label>
+          <input matInput name="name"  formControlName="latitude" placeholder="Enter latitude" type="text" required>
+          <button
+            *ngIf="this.ClientForm.controls['latitude'].value!=''"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="this.ClientForm.controls['latitude'].reset()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Enter latitude</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field">
+          <mat-label>longitude</mat-label>
+          <input matInput name="name"  formControlName="longitude" placeholder="Enter longitude" type="text" required>
+          <button
+            *ngIf="this.ClientForm.controls['longitude'].value!=''"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="this.ClientForm.controls['longitude'].reset()"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Enter longitude</mat-hint>
+        </mat-form-field>
+       
+      </form>
+
     </mat-drawer>
 
     <div class="example-sidenav-content">

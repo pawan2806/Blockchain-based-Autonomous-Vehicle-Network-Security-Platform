@@ -4,7 +4,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import UsersJson from './csvjson.json';
-import {FormBuilder, FormGroup, FormArray, } from '@angular/forms';
+import {FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { AgmMap, GoogleMapsAPIWrapper } from '@agm/core';
 import {
   MapsAPILoader
@@ -43,9 +43,11 @@ interface marker {
 export class DataviewComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'timestamp', 'accx', 'accy', 'accz','rollx','yawy','pitchz','latitude','longitude'];
   mapShow: boolean;
-  formGroup: FormGroup;
+  
+  
   dataSource = new MatTableDataSource<USERS>(UsersJson);
   routeControl = new FormControl(null, Validators.required);
+  idControl = new FormControl(null, Validators.required);
   selectFormControl = new FormControl('', Validators.required);
   routes: Route[] = [
     {name: 'Route 1', id: '1'},
@@ -58,7 +60,32 @@ export class DataviewComponent implements AfterViewInit {
   markers: marker[] = [
   ]
   showFiller = false;
-  value = '';
+  value = 'input here';
+
+  public ClientForm: FormGroup;
+
+  public onSubmit() {
+
+    this.ClientForm.reset();
+  }
+
+  public buildForm() {
+    this.ClientForm = this.form.group({
+      id: ['', [Validators.required]],
+      timestamp: ['', [Validators.required]],
+      accx: ['', [Validators.required]],
+      accy: ['', [Validators.required]],
+      accz: ['', [Validators.required]],
+      rollx: ['', [Validators.required]],
+      yawy: ['', [Validators.required]],
+      pitchz: ['', [Validators.required]],
+      latitude: ['', [Validators.required]],
+      longitude: ['', [Validators.required]],
+
+    });
+  }
+
+
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -93,6 +120,7 @@ export class DataviewComponent implements AfterViewInit {
   }
   
   mapClick(){
+    this.onSubmit();
     this.mapShow=!this.mapShow;
   }
   
@@ -104,24 +132,14 @@ export class DataviewComponent implements AfterViewInit {
 
   Users: USERS[] = UsersJson;
 
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder, public form: FormBuilder){
     
   }
 
   ngOnInit(): void {
     //console.log(this.Users);
-    this.formGroup = this.fb.group({
-      id: ['', Validators.required],
-      timestamp: ['', Validators.required],
-      accx: ['', Validators.required],
-      accy: ['', Validators.required],
-      accz: ['', Validators.required],
-      rollx: ['', Validators.required],
-      yawy: ['', Validators.required],
-      pitchz: ['', Validators.required],
-      latitude: ['', Validators.required],
-      longitude: ['', Validators.required],
-    });
+    this.buildForm();
+    
     this.mapShow=false;
     this.Users.forEach( (element) => {
       this.markers.push(
