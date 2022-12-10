@@ -14,9 +14,14 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatTableModule } from '@angular/material/table';
 import { AgmCoreModule } from '@agm/core';
-
-// import {ViewdataModule} from './viewdata/viewdata.module';
-// import {DataviewComponent} from './viewdata/da';
+import { MatIconModule } from '@angular/material/icon';
+import {
+  MatSidenavModule,
+} from '@angular/material/sidenav';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import {MatNativeDateModule} from '@angular/material/core';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,10 +36,17 @@ import { AgmCoreModule } from '@agm/core';
     MatFormFieldModule,
     MatSelectModule,
     BrowserModule, 
+    MatSidenavModule,
     ReactiveFormsModule ,
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatInputModule,
+    FormsModule,
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
@@ -43,6 +55,7 @@ import { AgmCoreModule } from '@agm/core';
    
    
   ],
+  exports: [MatSidenavModule],
   providers: [],
   bootstrap: [AppComponent]
 })

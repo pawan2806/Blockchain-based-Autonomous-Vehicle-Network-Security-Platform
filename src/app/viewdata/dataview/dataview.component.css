@@ -78,3 +78,36 @@ section {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+.example-container {
+  width: auto;
+  height: 300px;
+  border: 2px solid rgba(0, 0, 0, 2);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+.example-form-field {
+  width: 200px;
+}

@@ -55,6 +55,9 @@ export class DataviewComponent implements AfterViewInit {
   ];
   markers: marker[] = [
   ]
+  showFiller = false;
+  value = 'Clear me';
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
