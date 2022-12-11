@@ -16,13 +16,16 @@ import { MatTableModule } from '@angular/material/table';
 import { AgmCoreModule } from '@agm/core';
 import { MatIconModule } from '@angular/material/icon';
 import {FormBuilder, FormGroup, FormArray, } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import {
   MatSidenavModule,
 } from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms';
+
 import { MatInputModule } from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
+import { ApiService } from './viewdata/dataview/api.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +44,7 @@ import {HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule ,
     MatButtonModule,
     MatTableModule,
+    HttpClientModule,
     MatPaginatorModule,
     BrowserAnimationsModule,
     BrowserModule,
@@ -57,7 +61,7 @@ import {HttpClientModule} from '@angular/common/http';
    
   ],
   exports: [MatSidenavModule],
-  providers: [],
+  providers: [HttpClient, ApiService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
