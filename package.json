@@ -35,7 +35,9 @@
     "firebase": "^9.15.0",
     "rxjs": "~7.5.0",
     "truffle": "5.0.5",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "web3": "^1.8.1",
+    "web3modal": "^1.9.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.6",

@@ -34,7 +34,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 import { MapsAPILoader } from '@agm/core';
 import { ApiService } from './api.service';
-
+import Web3 from 'web3';
 export interface USERS {
   id: String;
   dataId: number;
@@ -82,8 +82,12 @@ export class DataviewComponent implements AfterViewInit {
     'pitchz',
     'latitude',
     'longitude',
+    'price',
+    'payable_owner',
   ];
   mapShow: boolean;
+  addDataShow: boolean;
+ 
 
   dataSource :any;
   routeControl = new FormControl(null, Validators.required);
@@ -119,6 +123,7 @@ export class DataviewComponent implements AfterViewInit {
       this.Users=this.userinfo;
     console.log(this.Users);
     this.dataSource =  new MatTableDataSource<USERS>(this.Users);
+    this.dataSource.paginator = this.paginator;
   }
 
   addNewData(){
@@ -148,6 +153,7 @@ export class DataviewComponent implements AfterViewInit {
             console.error('There was an error!', error);
         }
     });
+    this.showNewData();
 
   }
 
@@ -201,8 +207,20 @@ export class DataviewComponent implements AfterViewInit {
   }
 
   mapClick() {
-    this.onSubmit();
+    this.showNewData();
     this.mapShow = !this.mapShow;
+    this.Users.forEach((element) => {
+      this.markers.push({
+        lat: element.latitude,
+        lng: element.longitude,
+        label: element.dataId,
+        draggable: true,
+      });
+    });
+  }
+
+  hideAddData(){
+    this.addDataShow = !this.addDataShow;
   }
 
   ngAfterViewInit() {
@@ -214,9 +232,11 @@ export class DataviewComponent implements AfterViewInit {
 
   ngOnInit(): void {
     //console.log(this.Users);
+   
     this.buildForm();
 
     this.mapShow = false;
+    this.addDataShow=false;
     this.Users.forEach((element) => {
       this.markers.push({
         lat: element.latitude,

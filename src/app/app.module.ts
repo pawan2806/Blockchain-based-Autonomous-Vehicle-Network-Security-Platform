@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
 import { ApiService } from './viewdata/dataview/api.service';
+import Web3 from 'web3';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +62,7 @@ import { ApiService } from './viewdata/dataview/api.service';
    
   ],
   exports: [MatSidenavModule],
-  providers: [HttpClient, ApiService, HttpClientModule],
+  providers: [HttpClient, ApiService, HttpClientModule, Web3],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
